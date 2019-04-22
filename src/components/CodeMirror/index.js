@@ -5,6 +5,8 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 
+import './index.scss'
+
 class CodeMirror extends Component {
   constructor() {
     super()
@@ -22,7 +24,7 @@ class CodeMirror extends Component {
     textarea.setSize('auto', 'auto')
   }
   render() {
-    return <textarea ref={this.textarea} />
+    return <textarea ref={this.textarea} className="code-mirror-textarea" />
   }
 }
 

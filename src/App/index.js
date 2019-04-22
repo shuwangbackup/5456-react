@@ -1,26 +1,32 @@
 import React, { Component } from 'react'
-
-import CodeMirror from '../components/CodeMirror'
-
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      msg: 'hello react.js',
-      code: React.createRef.toString()
+      msg: 123,
+      todos: [{ id: 1, content: 'look' }, { id: 2, content: 'eat' }]
     }
   }
-  hanldeClick() {
+  todoHandle(todo) {
     this.setState({
-      msg: 'change'
+      todos: [{ id: 3, content: 'listen' }]
     })
   }
   render() {
-    const { msg, code } = this.state
     return (
       <div>
-        <span onClick={this.hanldeClick.bind(this)}>{msg}</span>
-        <CodeMirror code={code} />
+        <div>
+          <span>{this.state.msg}</span>
+        </div>
+        <ul>
+          {this.state.todos.map(todo => {
+            return (
+              <li key={todo.id} onClick={this.todoHandle.bind(this, todo)}>
+                {todo.content}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
